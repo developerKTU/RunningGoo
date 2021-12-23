@@ -22,10 +22,10 @@ public class RunningGooController {
 	
 	// 런닝구 방 생성 및 정보 입력하기
 	@RequestMapping("rngInsert.do")
-	public String CreateRngRoom(RunningGooVO vo, RunningGooRoomNumberVO rVO, HttpSession session) {
-		session.setAttribute("username", "kim");
+	public String CreateRngRoom(RunningGooVO vo, HttpSession session) {
+		session.setAttribute("username", "hong");
 		vo.setMemberID(session.getAttribute("username").toString());
-		runningGooService.insertRNRoomInfo(vo, rVO);
+		runningGooService.insertRNRoomInfo(vo);
 		System.out.println(vo.getRoomNumber());
 		return "redirect:runninggooList.do";
 	}

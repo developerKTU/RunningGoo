@@ -46,16 +46,68 @@
 					<div class="col-12 rn_card_check_box">
 						<div class="col-4 rn_card_sports_event_choice">
 							<p class="rn_room_hashtag">#스포츠 종목</p>
-							<input type="checkbox" checked> 런닝
+							<c:set var="SportsType" value="${runninggoo.sportsType}"/>
+							<c:choose>
+								<c:when test="${SportsType == 0}">
+									<input type="checkbox" checked disabled>런닝
+								</c:when>
+								
+								<c:when test="${SportsType == 1}">
+									<input type="checkbox" checked disabled>발야구
+								</c:when>
+								
+								<c:when test="${SportsType == 2}">
+									<input type="checkbox" checked disabled>피구
+								</c:when>
+								
+								<c:when test="${SportsType == 3}">
+									<input type="checkbox" checked disabled>테니스
+								</c:when>
+								
+								<c:when test="${SportsType == 4}">
+									<input type="checkbox" checked disabled>배드민턴
+								</c:when>
+								
+								<c:when test="${SportsType == 5}">
+									<input type="checkbox" checked disabled>프리스비
+								</c:when>
+							</c:choose>
+							<c:choose>
+								<c:when test="${SportsType == 0 }">
+									<p class="rn_room_hashtag">#런닝 뛸 거리</p>
+									<div class="runningDTC">${runninggoo.runningDistance }Km</div>
+								</c:when>
+								<c:otherwise>
+									<p class="rn_room_hashtag">#운동시간</p>
+									<div class="exerciseTime">${runninggoo.sportsTime }시간</div>
+								</c:otherwise>
+							</c:choose>
+							
 						</div>
 						<div class="col-4 rn_card_sports_location_choice">
 							<p class="rn_room_hashtag">#장소</p>
-							<input type="checkbox" checked> 안양천
+							<div id="rngLocation">${ runninggoo.location}</div>
 						</div>
 						<div class="col-4 rn_card_sports_age_choice">
 							<p class="rn_room_hashtag">#연령대</p>
-							<input type="checkbox" checked> 30대<br /> 
-							<input type="checkbox" checked> 40대
+							<c:set var="AgeGeneration" value="${runninggoo.ageGeneration}"/>
+							<c:choose>
+								<c:when test="${AgeGeneration == 20}">
+									<input type="checkbox" checked disabled>20대
+								</c:when>
+								
+								<c:when test="${AgeGeneration == 30}">
+									<input type="checkbox" checked disabled>20대 ~ 30대
+								</c:when>
+								
+								<c:when test="${AgeGeneration == 40}">
+									<input type="checkbox" checked disabled>20대 ~ 40대
+								</c:when>
+								
+								<c:when test="${AgeGeneration == 50}">
+									<input type="checkbox" checked disabled>20대 ~ 50대
+								</c:when>
+							</c:choose>
 						</div>
 					</div>
 					<div class="col-12 rn_card_host_comment_box">

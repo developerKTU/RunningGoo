@@ -67,11 +67,13 @@ p{
 }
 
 .balloon {  
- position:relative; 
+ position:relative;
+ top:-15px;
+ left:60px;
  margin: 50px;
  padding: 10px;
- width:300px; 
- height:50px;
+ width:200px; 
+ height:80px;
  background:pink; 
  border-radius: 10px;
 }
@@ -83,7 +85,7 @@ p{
  content:""; 
  position:absolute;
  top:-10px;
- left:200px;  
+ left:170px;  
 }
 
 #mbPoint{

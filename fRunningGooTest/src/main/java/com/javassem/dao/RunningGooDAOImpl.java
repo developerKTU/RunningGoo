@@ -18,18 +18,22 @@ public class RunningGooDAOImpl implements RunningGooDAO {
 	
 	// 런닝구 방 생성
 	@Override
-	public void createRngRoom(RunningGooVO vo, RunningGooRoomNumberVO rVO) {
+	public void createRngRoom(RunningGooVO vo) {
 		System.out.println("런닝구 방 생성");
-		//런닝구 방 생성
-		mybatis.insert("runningGooDAOMapper.createRunningGooRoom", vo);
 		// 룸넘버 생성
-		mybatis.insert("runningGooDAOMapper.createRunningGooRoomNumber", rVO);
+		mybatis.insert("runningGooDAOMapper.createRunningGooRoomNumber");
+		System.out.println("checkpoint1");
 		// 룸넘버 select 변수저장
 		int roomNumber = mybatis.selectOne("runningGooDAOMapper.getRunningGooRoomNumber");
-		// 룸넘버를 생성된 런닝구방에 주입
 		vo.setRoomNumber(roomNumber);
+		System.out.println("checkpoint2");
+		//런닝구 방 생성
+		mybatis.insert("runningGooDAOMapper.createRunningGooRoom", vo);
+		System.out.println("checkpoint3");
+
 	}
 	
+	// 런닝구 방 리스트 
 	@Override
 	public List<RunningGooVO> getRNRoomList(RunningGooVO vo) {
 		System.out.println("런닝구 방 리스트 불러오는 함수 호출");

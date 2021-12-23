@@ -59,6 +59,7 @@
 						<form action="rngInsert.do" method="post">
 							<input id="getLat" name="locationLat" style="display:none">
 							<input id="getLong" name="locationLong" style="display:none">
+							<input id="getFullAddress" name="location" style="display:none">
 							<p class="rn_room_hashtag">#만나는 날짜</p>
 							<input type="datetime-local" id="meeting-time" name="meetingTime">
 							<!-- <input type="datetime-local" id="meeting-time"
@@ -101,7 +102,7 @@
 							<div class="col-4 rn_card_sports_age_choice">
 								<p class="rn_room_hashtag">#연령대</p>
 								<span>20대</span>
-  								<input type="range" id="maxMembers" class="slider_range" name="maxMembers" min="20" max="50" value="20" step="10" 
+  								<input type="range" id="maxMembers" class="slider_range" name="ageGeneration" min="20" max="50" value="20" step="10" 
   										oninput="document.getElementById('slider_value_view3').innerHTML=this.value+'대';">
   								<span>50대</span>
   								<font size=2 id="slider_value_view3">0</font>

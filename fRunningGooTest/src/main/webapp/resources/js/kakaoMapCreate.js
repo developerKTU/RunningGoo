@@ -83,7 +83,7 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
         if (status === kakao.maps.services.Status.OK) {
             var detailAddr = !!result2[0].road_address ? '<div>도로명주소 : ' + result2[0].road_address.address_name + '</div>' : '';
             detailAddr += '<div>지번 주소 : ' + result2[0].address.address_name + '</div>';
-            
+            console.log(result2[0].address.address_name);
             var content = '<div class="bAddr">' +
                             '<span class="title">주소정보</span>' + 
                             detailAddr + 
@@ -96,7 +96,12 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
             // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
             infowindow.setContent(content);
             infowindow.open(map, marker);
-        }   
+            
+            $('#getFullAddress').val(result2[0].address.address_name);
+            
+        }
+       
+        
     });
 });
 

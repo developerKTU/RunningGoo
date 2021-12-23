@@ -9,7 +9,7 @@ import com.javassem.domain.RunningGooVO;
 
 public interface RunningGooService {
 	// 런닝구 방 생성
-	void insertRNRoomInfo(RunningGooVO vo, RunningGooRoomNumberVO rVO);
+	void insertRNRoomInfo(RunningGooVO vo);
 	
 	// 런닝구 리스트 가져오기
 	List<RunningGooVO> getRNRoomList(RunningGooVO vo);
