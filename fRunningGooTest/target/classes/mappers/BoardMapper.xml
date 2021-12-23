@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardDAO">
+
+
+	<insert id="insertBoard" parameterType="BoardVO">
+		INSERT INTO uploadtemp(
+		b_name, b_email, b_title, 
+		b_content, b_pwd, b_date, b_count
+		<if test="b_fname != null">
+		,b_fname, b_fsize, b_realfname
+		</if>
+		)VALUES(#{b_name},#{b_email},#{b_title},
+		#{b_content},#{b_pwd},now(),0
+		<if test="b_fname != null">
+		,#{b_fname}, #{b_fsize}, #{b_realfname}
+		</if>	   
+			   
+			   )
+	</insert>
+
+	<select id="getBoardList" resultType="BoardVO">
+		<![CDATA[
+		SELECT * FROM uploadtemp ORDER BY b_id DESC
+		]]>
+	</select>
+	
+	<update id="updateBoard"  parameterType="BoardVO">
+		<![CDATA[
+		UPDATE uploadtemp SET
+		b_title = #{b_title},
+		b_content = #{b_content}
+		WHERE b_id = #{b_id}
+		]]>
+	</update>
+	
+	<delete id="deleteBoard"  parameterType="BoardVO">
+		<![CDATA[
+		DELETE FROM uploadtemp
+		WHERE b_id = #{b_id}
+		]]>
+	</delete>
+	
+	<select id="getBoard"  parameterType="BoardVO" resultType="BoardVO">
+		<![CDATA[
+		SELECT *
+		FROM uploadtemp
+		WHERE b_id = #{b_id}
+		]]>
+	</select>
+	
+
+</mapper>
