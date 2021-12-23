@@ -17,7 +17,7 @@
 <script src="resources/js/plugins.js"></script>
 <script src="resources/js/main.js"></script>
 <script type="text/javascript" src="resources/js/bootstrap.js"></script>
-<title>런닝구</title>
+<title>런닝구 (test)</title>
 </head>
 <body>
 	<!-- header -->

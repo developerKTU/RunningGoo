@@ -197,5 +197,4 @@ function adminRNGList(){
        evt.preventDefault();            // a태그 링크 기능 무력화
        evt.stopPropagation();            // a태그 링크 기능 무력화
        adminRNGList();                     // 리스트 출력 함수 호출
-    }); //end click 
-
+    }); //end click

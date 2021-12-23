@@ -16,7 +16,7 @@
 <script src="resources/js/plugins.js"></script>
 <script src="resources/js/main.js"></script>
 <script type="text/javascript" src="resources/js/bootstrap.js"></script>
-<title>런닝구</title>
+<title>런닝구 (test)</title>
 </head>
 <body>
 	<!-- header -->
@@ -135,7 +135,7 @@
 		</div>
 	</div>
 
-	<!-- <!-- footer
+	<!--  footer
 	<footer id="footer">
 		<div class="container-fluid">
 			<div class="col-md-12">
@@ -143,7 +143,7 @@
 					TemplateMo</p>
 			</div>
 		</div>
-	</footer> -->
+	</footer>  -->
 	
 	<div class="rngForEachLength">${rnRoomCNT }</div>
 	

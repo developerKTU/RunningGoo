@@ -23,6 +23,7 @@ public class RunningGooController {
 	// 런닝구 방 생성 및 정보 입력하기
 	@RequestMapping("rngInsert.do")
 	public String CreateRngRoom(RunningGooVO vo, HttpSession session) {
+		// Dogether 본 서버에서는 session.setAttribute를 해줄 필요가 없음.
 		session.setAttribute("username", "hong");
 		vo.setMemberID(session.getAttribute("username").toString());
 		runningGooService.insertRNRoomInfo(vo);
