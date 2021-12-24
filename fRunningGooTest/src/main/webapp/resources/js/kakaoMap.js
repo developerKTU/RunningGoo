@@ -9,8 +9,6 @@ for(var i=1; i<dbNum+1; i++){
 	// 각 리스트별 위도, 경도
 	var lat = parseFloat($('.runninggoo_card_wrap:nth-child('+ i +') .wido').text()).toPrecision(14);
 	var long = parseFloat($('.runninggoo_card_wrap:nth-child('+ i +') .gyeongdo').text());
-	console.log(lat);
-	console.log(long);
 	
 	// 	
 	var n = 'map'+i;

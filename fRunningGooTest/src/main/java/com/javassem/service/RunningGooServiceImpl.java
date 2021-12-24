@@ -39,5 +39,17 @@ public class RunningGooServiceImpl implements RunningGooService {
 	public int getMemberJoinRunningGoo(MemberVO vo){
 	    return runningGooDAO.getRngMemberPoints(vo);
 	}
+
+	@Override
+	public RunningGooVO bringBasicRngRoomInfo(RunningGooVO vo) {
+		
+		return runningGooDAO.bringBasicRngRoomInfo(vo);
+	}
+
+	@Override
+	public void CreateRunningGooMemberInsert(RunningGooVO vo) {
+		runningGooDAO.CreateRunningGooMemberInsert(vo);
+		
+	}
 	
 }

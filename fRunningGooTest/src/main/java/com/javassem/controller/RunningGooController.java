@@ -27,7 +27,6 @@ public class RunningGooController {
 		session.setAttribute("username", "hong");
 		vo.setMemberID(session.getAttribute("username").toString());
 		runningGooService.insertRNRoomInfo(vo);
-		System.out.println(vo.getRoomNumber());
 		return "redirect:runninggooList.do";
 	}
 	
@@ -38,7 +37,6 @@ public class RunningGooController {
 		System.out.println(session.getAttribute("username").toString());
 		List<RunningGooVO> result = runningGooService.getRNRoomList(vo);
 		int listCount = runningGooService.getRNRoomCount(vo);
-		System.out.println(listCount);
 		m.addAttribute("RunningGooList", result);
 		m.addAttribute("rnRoomCNT", listCount);
 		System.out.println("Model 객체를 통해 전달완료!");
@@ -51,8 +49,24 @@ public class RunningGooController {
 	public Integer viewMembersPoints(MemberVO vo) {
 		System.out.println("보유포인트 컨트롤러 테스트!");
 		int rngMemberPoints = runningGooService.getMemberJoinRunningGoo(vo);
-		System.out.println(rngMemberPoints);
 		return rngMemberPoints;
 	}
-
+	
+	// DoJoin 버튼 클릭 시 호스트에게 보여질 참여자의 정보 select
+	@RequestMapping("bringBasicRngRoomInfo.do")
+	@ResponseBody
+	public String showJoinMember(RunningGooVO vo, HttpSession session) {
+		// 일단 방참여 정보는 똑같으니 vo를 불러와 각각의 vo에 담기
+		System.out.println(vo.getRoomNumber());
+		session.setAttribute("username", "99con");
+		
+		RunningGooVO svo = runningGooService.bringBasicRngRoomInfo(vo);
+		svo.setMemberID(session.getAttribute("username").toString());
+		svo.setMemberPendingStatusYN("Y");
+		svo.setHostYN("N");
+		System.out.println(svo.getMemberID());
+		runningGooService.CreateRunningGooMemberInsert(svo);
+		return "호스트에게 참여신청을 보냈습니다!";
+	}
+	
 }

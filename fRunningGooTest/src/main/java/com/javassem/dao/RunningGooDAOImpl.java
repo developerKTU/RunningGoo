@@ -52,4 +52,19 @@ public class RunningGooDAOImpl implements RunningGooDAO {
 		return mybatis.selectOne("runningGooDAOMapper.getMemberJoinRngList",vo);
 	}
 
+	@Override
+	public RunningGooVO bringBasicRngRoomInfo(RunningGooVO vo) {
+		// TODO Auto-generated method stub
+		System.out.println("DoJoin 클릭시 INSERT되는 함수");
+		return mybatis.selectOne("runningGooDAOMapper.bringBasicRngRoomInfo", vo);
+	}
+
+	@Override
+	public void CreateRunningGooMemberInsert(RunningGooVO vo) {
+		// TODO Auto-generated method stub
+		mybatis.insert("runningGooDAOMapper.CreateRunningGooMemberInsert", vo);
+	}
+	
+	
+	
 }

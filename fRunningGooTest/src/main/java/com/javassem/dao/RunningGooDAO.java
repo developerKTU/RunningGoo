@@ -22,5 +22,11 @@ public interface RunningGooDAO {
 	
 	// 런닝구 방 생성 시 멤버 보유 포인트 얻어오기
 	public int getRngMemberPoints(MemberVO vo);
+	
+	// doJoin 눌렀을때 insert되는 멤버 정보
+	RunningGooVO bringBasicRngRoomInfo(RunningGooVO vo);
+	
+	//
+	void CreateRunningGooMemberInsert(RunningGooVO vo);
 
 }

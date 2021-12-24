@@ -19,6 +19,11 @@ public interface RunningGooService {
 	
 	// 멤버 포인트 조회
 	int getMemberJoinRunningGoo(MemberVO vo);
-
-
+	
+	// doJoin눌렀을때 불러오는 기본 런닝구 방 정보
+	RunningGooVO bringBasicRngRoomInfo(RunningGooVO vo);
+	
+	// 
+	void CreateRunningGooMemberInsert(RunningGooVO vo);
+	
 }

@@ -57,9 +57,9 @@
 					<div class="col-12 rn_card_check_box">
 						
 						<form action="rngInsert.do" method="post">
-							<input id="getLat" name="locationLat" style="display:none">
-							<input id="getLong" name="locationLong" style="display:none">
-							<input id="getFullAddress" name="location" style="display:none">
+							<input id="getLat" name="locationLat" style="display:block">
+							<input id="getLong" name="locationLong" style="display:block">
+							<input id="getFullAddress" name="location" style="display:block">
 							<p class="rn_room_hashtag">#만나는 날짜</p>
 							<input type="datetime-local" id="meeting-time" name="meetingTime">
 							<!-- <input type="datetime-local" id="meeting-time"

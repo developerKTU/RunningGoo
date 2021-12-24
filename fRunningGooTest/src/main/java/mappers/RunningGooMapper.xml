@@ -8,6 +8,16 @@
 		VALUES(#{roomNumber},#{location},#{memberID}, #{maxMembers},#{sportsType}, #{runningDistance}, #{ageGeneration}, #{sportsTime}, #{locationLat}, #{locationLong}, #{hostComment},#{meetingTime},5000)
 	</insert>
 	
+	
+	<insert id="CreateRunningGooMemberInsert" parameterType="com.javassem.domain.RunningGooVO">
+		INSERT INTO runninggoo(roomNumber,location,memberID,memberPendingStatusYN,
+		currentMembers,maxMembers, hostYN, sportsType, runningDistance, ageGeneration, sportsTime, 
+		locationLat, locationLong, hostComment,meetingTime,deposit) 
+		VALUES(#{roomNumber},#{location},#{memberID},#{memberPendingStatusYN},
+		#{currentMembers},#{maxMembers}, #{hostYN}, #{sportsType}, #{runningDistance}, #{ageGeneration}, #{sportsTime}, 
+		#{locationLat}, #{locationLong}, #{hostComment},#{meetingTime},5000)
+	</insert>
+	
 	<insert id="createRunningGooRoomNumber"  parameterType="com.javassem.domain.RunningGooVO">
 		INSERT INTO runninggoo_number VALUE(RoomNumber);
 	</insert>
@@ -17,7 +27,11 @@
 	</select>
 	
 	<select id="getRunningGooList" resultType="com.javassem.domain.RunningGooVO">
-		select * from runninggoo group by RoomNumber;
+		SELECT * FROM runninggoo GROUP BY RoomNumber;
+	</select>
+	
+	<select id="bringBasicRngRoomInfo" resultType="com.javassem.domain.RunningGooVO">
+		SELECT * FROM runninggoo WHERE RoomNumber = #{roomNumber} GROUP BY RoomNumber;
 	</select>
 	
 	<select id="getRunningGooRoomCount" resultType="integer">

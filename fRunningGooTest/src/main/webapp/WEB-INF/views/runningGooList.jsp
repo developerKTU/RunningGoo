@@ -35,6 +35,7 @@
 			<div class="col-12 runninggoo_card_wrap">
 				<div class="col-12 runninggoo_card_inner mb30">
 					<div class="col-12 rn_card_user_profile">
+						<div class="rngRoomNum">${runninggoo.roomNumber }</div>
 						<div class="col-0 rn_profile_picture">
 							<img src="resources/images/default_profile.png" alt="(DB에서)">
 						</div>
@@ -45,6 +46,10 @@
 					</div>
 					<div class="col-12 rn_card_check_box">
 						<div class="col-4 rn_card_sports_event_choice">
+							<div>
+								<p class="rn_room_hashtag">#만나는 날짜/시간</p>
+								<div id="showMeetingTime">${runninggoo.meetingTime }</div>
+							</div>
 							<p class="rn_room_hashtag">#스포츠 종목</p>
 							<c:set var="SportsType" value="${runninggoo.sportsType}"/>
 							<c:choose>
@@ -116,9 +121,18 @@
 							<div class="col-12 rn_card_host_comment">${runninggoo.hostComment }</div>
 						</div>
 					</div>
-					<div class="col-12 doJoinBtn">
-					<input type="button" value="DoJoin">
-				</div>
+					<c:choose>
+						<c:when test="${ sessionScope.username == runninggoo.memberID }">
+							<div class="col-12 doJoinBtn">
+								<input type="button" class="hostBtn" value="Enrollment Status">
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="col-12 doJoinBtn">
+								<input type="button" class="userBtn" value="DoJoin">
+							</div>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<div class="wido" style="display: none">${runninggoo.locationLat}</div>
 				<div class="gyeongdo" style="display: none">${runninggoo.locationLong}</div>
@@ -150,6 +164,6 @@
 
 	<script type="text/javascript"src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b002992ff5db3facd06fff2ffcf08711"></script>
 	<script type="text/javascript" src="resources/js/kakaoMap.js"></script>
-	
+	<script type="text/javascript" src="resources/js/RunningGoo.js"></script>
 </body>
 </html>
