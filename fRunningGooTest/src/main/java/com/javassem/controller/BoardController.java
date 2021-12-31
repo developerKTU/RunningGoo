@@ -20,10 +20,10 @@ public class BoardController {
 	
 		// Service와 DAO까지 갈 필요없고, 요청을 받고 view화면만 출력해주는 요청들을 위해 만든다.
 		// 예를들어 입력폼 같은 페이지들한테 쓰인다.
-		@RequestMapping("/{step}.do")
-		public String viewPage(@PathVariable String step) {
-			return step;
-		}
+		
+		  @RequestMapping("/{step}.do") public String viewPage(@PathVariable String
+		  step) { return step; }
+		 
 	
 		// 글 목록 검색
 		@RequestMapping("/getBoardList.do")

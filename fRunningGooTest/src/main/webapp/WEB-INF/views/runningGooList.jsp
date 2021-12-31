@@ -32,10 +32,15 @@
 	<!-- DB에서 forEach 돌며 값 불러오기 -->
 	<div class="col-12 rn_room_list_wrap">
 		<c:forEach items="${RunningGooList }" var="runninggoo">
-			<div class="col-12 runninggoo_card_wrap">
+			<c:choose>
+				<c:when test="${runninggoo.currentMembers == runninggoo.maxMembers }">
+					<!-- 꽉찬 방일떄 처리할 스타일 -->
+				</c:when>
+				<c:when test="${runninggoo.currentMembers < runninggoo.maxMembers }">
+					<div class="col-12 runninggoo_card_wrap">
 				<div class="col-12 runninggoo_card_inner mb30">
 					<div class="col-12 rn_card_user_profile">
-						<div class="rngRoomNum">${runninggoo.roomNumber }</div>
+						<div class="rngRoomNum" style="display:none">${runninggoo.roomNumber }</div>
 						<div class="col-0 rn_profile_picture">
 							<img src="resources/images/default_profile.png" alt="(DB에서)">
 						</div>
@@ -137,6 +142,8 @@
 				<div class="wido" style="display: none">${runninggoo.locationLat}</div>
 				<div class="gyeongdo" style="display: none">${runninggoo.locationLong}</div>
 			</div>
+				</c:when>
+			</c:choose>
 		</c:forEach>
 		<div class="col-12 rn_plus_btn">
 			<a href="createRngRoom.do" class="rn_plus_btn_link"> <img

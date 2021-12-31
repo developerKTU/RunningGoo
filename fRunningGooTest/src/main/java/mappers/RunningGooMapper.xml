@@ -19,29 +19,48 @@
 	</insert>
 	
 	<insert id="createRunningGooRoomNumber"  parameterType="com.javassem.domain.RunningGooVO">
-		INSERT INTO runninggoo_number VALUE(RoomNumber);
+		INSERT INTO runninggoo_number VALUE(RoomNumber)
 	</insert>
 	
 	<select id="getRunningGooRoomNumber" resultType="integer">
-		SELECT * FROM runninggoo_number ORDER BY RoomNumber DESC LIMIT 1;
+		SELECT * FROM runninggoo_number ORDER BY RoomNumber DESC LIMIT 1
 	</select>
 	
 	<select id="getRunningGooList" resultType="com.javassem.domain.RunningGooVO">
-		SELECT * FROM runninggoo GROUP BY RoomNumber;
+		SELECT * FROM runninggoo WHERE hostYN = 'Y' GROUP BY RoomNumber
 	</select>
 	
 	<select id="bringBasicRngRoomInfo" resultType="com.javassem.domain.RunningGooVO">
-		SELECT * FROM runninggoo WHERE RoomNumber = #{roomNumber} GROUP BY RoomNumber;
+		SELECT * FROM runninggoo WHERE RoomNumber = #{roomNumber} GROUP BY RoomNumber
 	</select>
 	
 	<select id="getRunningGooRoomCount" resultType="integer">
-		SELECT COUNT(*) FROM runninggoo;
+		SELECT COUNT(*) FROM runninggoo
 	</select>
 	
 	<select id="getMemberJoinRngList" resultType="integer" parameterType="com.javassem.domain.MemberVO">
       SELECT point
-      FROM runninggoo NATURAL JOIN member
-      WHERE MemberID = 'member1'
-      GROUP BY MemberID;
+      FROM member
+      WHERE MemberID = 'hong'
+   </select>
+   
+   <update id="upadateRunningGooJoinMemberInfo" parameterType="hashmap">
+   		UPDATE runninggoo 
+		SET currentMembers = currentMembers+1,
+		MemberPendingStatusYN = 'N'
+		WHERE memberid = #{memberid}
+		AND roomnumber = #{roomnumber}
+   </update>
+   
+   <select id="viewJoinMemberList" parameterType="integer" resultType="hashmap">
+     SELECT roomNumber, memberID, Birthday, Gender, UserName, NickName, PhoneNumber 
+     from runninggoo r natural join member m 
+	 where r.MemberID = m.MemberID and RoomNumber = #{roomNum} and HostYN ='N' and MemberPendingStatusYN = 'N'
+   </select>
+   
+   <select id="viewNotYetJoinMemberList" parameterType="integer" resultType="hashmap">
+     SELECT roomNumber , memberID, Birthday, Gender, UserName, NickName, PhoneNumber 
+     from runninggoo r natural join member m
+	 where r.MemberID = m.MemberID and RoomNumber = #{roomNum} and HostYN ='N' and MemberPendingStatusYN = 'Y'
    </select>
 </mapper>

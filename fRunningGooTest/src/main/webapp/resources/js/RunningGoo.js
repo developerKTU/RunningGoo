@@ -85,13 +85,49 @@ $(".userBtn").click(function(){
         alert(nowRoomNum);
         $.ajax({
         	url: "bringBasicRngRoomInfo.do",
-        	data : { roomNumber : nowRoomNum },
+        	data : { roomNumber : nowRoomNum},
         	success: function(res){
 		        alert(res);
         	},
         	error : function(){
-        		alert("신청실패!");
+        		alert("요청실패!");
         	}
         }); // end-of-ajax   
     } // end-of-else
 })
+
+
+
+// 호스트가 버튼을 눌렀을때 팝업창 화면
+$('.hostBtn').click(function(){
+	var nowRoomNum = $(this).parent().prev().prev().prev().prev().children(".rngRoomNum").text();
+	alert("런닝구 멤버들의 신청현황 조회를 완료했습니다.");
+	window.open('viewJoinMemberTotalInfo.do?roomNumber=' + nowRoomNum, 'popup01', 'width=600, height=400, scrollbars= 0, toolbar=0, menubar=no');
+		
+}) // end-of-click
+
+// 호스트가 수락을 눌렀을때
+$('.acceptJoin').click(function(){
+	$.ajax({
+		url: "updateJoinMemberInfo.do",
+        data : { roomNum : $("#roomNum").text() },
+        success: function(res){
+		    alert(res);
+		    
+       	},
+        error : function(){
+        	alert("요청실패!!!!");
+        }
+	}) //end-of-ajax
+})
+
+
+
+
+
+
+
+
+
+
+
